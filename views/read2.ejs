@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+        body{
+            background-color: #D8C99B;
+            margin: 0;
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+        nav{
+            background-color: #273E47;
+            color: white;
+        }
+        nav h1{
+            text-align: center;
+            margin-top: 0;
+            padding: 5px 0px;
+        }
+        #head{
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            /* display: flex;
+            justify-content: space-between; */
+            background-color: #273E47;
+            color: white;
+            /* place-self: center; */
+            /* justify-self: center; */
+        }
+        #master{
+            max-width: 800px;
+            place-content: center;
+            margin: auto;
+        }
+        table{
+            width: 100%;
+            text-align: center;
+        }
+        th, td{
+            /* height: 35px; */
+            padding: 10px;
+        }
+        #head h1{
+            margin-bottom: 0;
+        }
+        #but button{
+            background-color: #D8973C;
+            height: 25px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            width: 50px;
+        }
+        #but{
+            display: flex;
+            place-content: center;
+            flex-wrap: wrap;
+            /* align-items: center; */
+        }
+        th, td, table{
+            border: 1px solid wheat;
+        }
+        #search input{
+            height: 25px;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+        #sec button{
+            height: 25px;
+            border: 2px solid;
+            border-radius: 5px;
+            font-weight: bold;
+            background-color: #D8973C;
+        }
+        #sec{
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        tbody tr:hover{
+            background-color: #ffffff;
+            color: black;
+        }
+        button:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <h1>User Management Database</h1>
+    </nav>
+    <div id="master">
+        <div id="sec">
+                <div id="search">
+                    <input type="search" id="searching">
+                    <button id="butt">SEARCH</button>
+                </div>
+                <a href="/signup">
+                    <button>Add User</button>
+                </a>
+        </div>
+        <div id="head">
+       <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>PASSWORD</th>
+                <th>ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% user.forEach((uses, i) => { %>
+            <tr>
+                <td><%= i + 1 %></td>
+                <td><%= uses.name %></td>
+                <td><%= uses.email %></td>
+                <td><%= uses.password %></td>
+                <td id="but">
+                    <a href="/update/<%= uses._id %>">
+                        <button><i class="fa-solid fa-pen-to-square" style="color: #273e47;"></i></button>
+                    </a>
+                    <form action="/delete/<%= uses._id %>?_method=DELETE" method="post">
+                        <button><i class="fa-solid fa-trash"></i></button>
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+       </table>
+    </div>
+    </div>
+  
+
+
+        <script>
+        let button = document.getElementById("butt")
+        button.addEventListener("click", () => {
+            let val = document.getElementById("searching").value
+
+            if (val.length === 0) {
+                alert("Enter something")
+            } else {
+                window.location.href = `/api/read/${val}`
+            }
+            
+             
+        })
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #D8C99B;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        nav{
+            background-color: #273E47;
+            color: white;
+        }
+        nav h1{
+            text-align: center;
+            margin-top: 0;
+            padding: 5px 0px;
+        }
+        button:hover{
+            cursor: pointer;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 20px;
+        }
+        #head{
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            /* display: inline-block; */
+            background-color: #273E47;
+            color: white;
+            place-self: center;
+            width: 270px;
+
+        }
+        #head h1{
+            margin-bottom: 0;
+        }
+        button{
+            background-color: #D8973C;
+            height: 30px;
+            border-radius: 20px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+        input{
+            width: 100%;
+            border: 1px solid black;
+            border-radius: 5px;
+            height: 25px;
+        }
+        label{
+            text-align: end;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <h1>User Management Database</h1>
+    </nav>
+    <a href="/api/read">
+        <h2><<< Back</h1>
+    </a>
+    <div id="head">
+        <h1>Update Your Info</h1>
+        <hr>
+        <form action="/update/<%= usered.id %>?_method=PUT" method="post">
+            <div>
+                <label for="name">Username:</label>
+                <input type="text" name="name" placeholder="Enter name" id="name" value="<%= usered.name %>">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" name="email" placeholder="Enter email" id="email" value="<%= usered.email %>">
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" name="password" placeholder="Enter password" id="password" value="<%= usered.password %>">
+            </div>
+                <button id="buttonn">Update</button>
+        </form>
+    </div>
+
+
+    <script>
+        const button = document.getElementById("buttonn")
+        const names = document.getElementById("name")
+        const email = document.getElementById("email")
+        const pass = document.getElementById("password")
+
+        button.addEventListener("click", () => {
+            const v = names.value
+
+            const u = v.indexOf(" ")
+            
+            if (u === -1) {
+                const p = v.slice(0).charAt().toLocaleUpperCase() + v.slice(1)
+                names.value = p
+                
+            }else{
+                const y = v.slice(u +1).charAt().toLocaleUpperCase() + v.slice(u +2)
+                const f = v.charAt().toLocaleUpperCase() + v.slice(1, u) + " " + y
+                names.value = f
+                
+            }
+            console.log(names.value);
+
+            if (names.value != "" && email.value != "" && pass.value != "") {
+                alert("Your info have been updated successfully")
+            }
+        })
+
+    </script>
+</body>
+</html>

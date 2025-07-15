@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body{
+            background-color: #D8C99B;
+            margin: 0;
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+        nav{
+            background-color: #273E47;
+            color: white;
+        }
+        nav h1{
+            text-align: center;
+            margin-top: 0;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 20px;
+        }
+        #head{
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #273E47;
+            color: white;
+            max-width: 800px;
+            place-content: center;
+            margin: auto;
+            /* place-self: center; */
+            /* justify-self: center; */
+        }
+        table{
+            width: 100%;
+            text-align: center;
+        }
+        th, td{
+            /* height: 35px; */
+            padding: 10px;
+        }
+        #head h1{
+            margin-bottom: 0;
+        }
+        #but button{
+            background-color: #D8973C;
+            height: 25px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            width: 50px;
+        }
+        /* input{
+            width: 100%;
+            border: 1px solid black;
+            border-radius: 5px;
+            height: 25px;
+        }
+        label{
+            text-align: end;
+        } */
+        #but{
+            display: flex;
+            place-content: center;
+            flex-wrap: wrap;
+        }
+        th, td, table{
+            border: 1px solid wheat;
+        }
+        #search{
+            margin-bottom: 10px;
+        }
+        #search input{
+            height: 25px;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+        #search button{
+            height: 25px;
+            border: 2px solid;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        tbody:hover{
+            background-color: #ffffff;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <h1>User Management Database</h1>
+    </nav>
+    <div id="search">
+        <input type="search">
+        <button>SEARCH</button>
+    </div>
+    <div id="head">
+       <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>PASSWORD</th>
+                <th>ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Emmanuel</td>
+                <td>uzore156@gmail.com</td>
+                <td>qwertyuiop</td>
+                <td id="but">
+                    <button><i class="fa-solid fa-pen-to-square" style="color: #273e47;"></i></button>
+                    <button><i class="fa-solid fa-trash"></i></button>
+                </td>
+            </tr>
+        </tbody>
+       </table>
+    </div>
+
+    <input type="search" id="email">
+    <button id="buttonn">werty</button>
+
+     <script>
+        const button = document.getElementById("buttonn")
+        const names = document.getElementById("name")
+        const email = document.getElementById("email")
+        const pass = document.getElementById("password")
+
+            const v = "qwertyuiop"
+            const u = v.indexOf(" ")
+          
+
+            if (u === -1) {
+                const y = v.slice(0).charAt().toLocaleUpperCase() + v.slice(1)
+                console.log(y);
+                
+            }else{
+                const y = v.slice(u +1).charAt().toLocaleUpperCase() + v.slice(u +2)
+                const f = v.charAt().toLocaleUpperCase() + v.slice(1, u) + " " + y
+                console.log(f);
+                
+            }
+
+        
+        button.addEventListener("click", () => {
+            const v = email.value
+            const f = v.charAt().toLocaleUpperCase() + v.slice(1)
+            email.value = f
+            console.log(f);
+            console.log(email.value);
+            
+
+        })
+
+
+    </script>
+</body>
+</html>
